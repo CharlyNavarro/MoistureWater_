@@ -15,5 +15,8 @@
   "workspaces": [
     "src/mw_backend",
     "src/mw_frontend"
-  ]
+  ],
+  "dependencies": {
+    "@dfinity/auth-client": "^1.4.0"
+  }
 }

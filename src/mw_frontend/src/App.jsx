@@ -1,31 +1,35 @@
-import { useState } from 'react';
-import { mw_backend } from 'declarations/mw_backend';
+import { Client, InternetIdentity } from '@bundly/ic-core-js';
+import { IcpConnectContextProvider } from '@bundly/ic-react';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import { Home } from './Home';
 
-function App() {
-  const [greeting, setGreeting] = useState('');
+export default function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home/>,
+    },
+  ]);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    mw_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
+  const client = Client.create({
+    restCanisters: {
+      backend: {
+        baseUrl: process.env.REACT_APP_API_REST_URL
+      }
+    },
+    providers: [
+      new InternetIdentity({
+        providerUrl: process.env.REACT_APP_INTERNET_IDENTITY_URL
+      })
+    ]
+  });
 
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
-  );
-}
-
-export default App;
+    <IcpConnectContextProvider client={client}>
+      <RouterProvider router={router} />
+    </IcpConnectContextProvider>
+  )
+};
