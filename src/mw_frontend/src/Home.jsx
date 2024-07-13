@@ -4,6 +4,8 @@ import './styles.css'
 import logo from './logo.jpg';
 import './Acercade';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import axios from 'axios';
+
 <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'></link>
 
 const ToggleDivs = () => {
@@ -50,6 +52,15 @@ const ToggleDivs = () => {
   const handleSecondButtonClick = () => {
     setIsSecondDivVisible(!isSecondDivVisible);
   };
+
+  const traerDatos = async () => {
+    try {
+        await axios.post<IDA>(${process.env.NEXT_PUBLIC_API_REST_URL});
+    } catch (error) {
+        alert(`Hubo un error al realizar la peticion: ${error}`);
+    }
+}
+
 
   return (
     <>

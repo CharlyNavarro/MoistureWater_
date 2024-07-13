@@ -14,7 +14,7 @@ export default function App() {
       element: <Home/>,
     },
     {
-      path: "/AcercaDe",
+      path: "/Acercade",
       element: <Acerca></Acerca>
     }
   ]);
