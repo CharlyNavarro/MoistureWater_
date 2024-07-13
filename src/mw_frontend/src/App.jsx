@@ -5,6 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { Home } from './Home';
+import Acerca from './Acercade'
 
 export default function App() {
   const router = createBrowserRouter([
@@ -12,6 +13,10 @@ export default function App() {
       path: "/",
       element: <Home/>,
     },
+    {
+      path: "/AcercaDe",
+      element: <Acerca></Acerca>
+    }
   ]);
 
   const client = Client.create({

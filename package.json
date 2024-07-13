@@ -17,6 +17,7 @@
     "src/mw_frontend"
   ],
   "dependencies": {
-    "@dfinity/auth-client": "^1.4.0"
+    "@dfinity/auth-client": "^1.4.0",
+    "express": "^4.19.2"
   }
 }

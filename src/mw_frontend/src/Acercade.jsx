@@ -1,7 +1,7 @@
 import './styles.css'
 
 
-const ToggleDivs = () => {
+const Acerca = () => {
   return (
     <>
     <div className='equipo'>
@@ -37,4 +37,4 @@ const ToggleDivs = () => {
   );
 };
 
-export default ToggleDivs;
+export default Acerca;
